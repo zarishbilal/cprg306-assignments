@@ -5,7 +5,7 @@ export default function Page() {
       <h1>Hello World!</h1>
       <p>This is a simple web page</p>
       <p>
-        Link to week 2: <Link href="week2">Week 2</Link>
+        Link to week 2: <Link href="week-2">Week 2</Link>
       </p>
     </div>
   );
