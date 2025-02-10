@@ -28,14 +28,14 @@ export default function ItemForm() {
   };
 
   return (
-    <section className="max-w-md mx-auto bg-white shadow-lg rounded-lg p-6 mt-8">
-      <h2 className="text-2xl font-semibold text-gray-700 text-center mb-4">
+    <section className="max-w-md mx-auto bg-gray-900 shadow-xl rounded-lg p-6 mt-8">
+      <h2 className="text-2xl font-semibold text-white text-center mb-4">
         Add New Item
       </h2>
 
       <form onSubmit={handleSubmit} className="space-y-4">
         <div>
-          <label htmlFor="name" className="block text-gray-600 font-medium">
+          <label htmlFor="name" className="block text-gray-300 font-medium">
             Name
           </label>
           <input
@@ -44,21 +44,21 @@ export default function ItemForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full p-2 mt-1 border border-gray-600 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
             placeholder="Enter item name"
           />
           {error && <p className="text-red-500 mt-1 animate-pulse">{error}</p>}
         </div>
 
         <div>
-          <label htmlFor="category" className="block text-gray-600 font-medium">
+          <label htmlFor="category" className="block text-gray-300 font-medium">
             Category
           </label>
           <select
             id="category"
             value={category}
             onChange={(e) => setCategory(e.target.value)}
-            className="w-full p-2 mt-1 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:outline-none"
+            className="w-full p-2 mt-1 border border-gray-600 bg-gray-800 text-white rounded-md focus:ring-2 focus:ring-blue-400 focus:outline-none"
           >
             <option value="produce">Produce</option>
             <option value="dairy">Dairy</option>
