@@ -16,6 +16,33 @@ export default function ItemList() {
     return 0;
   });
 
+  const groupedItems = itemList.reduce((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item);
+    return acc;
+  }, {});
+
+  const renderItems = () => {
+    if (sortBy === "grouped") {
+      return Object.keys(groupedItems)
+        .sort()
+        .map((category) => (
+          <div key={category}>
+            <h2 className="capitalize">{category}</h2>
+            {groupedItems[category]
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .map((item) => (
+                <Item key={item.id} {...item} />
+              ))}
+          </div>
+        ));
+    } else {
+      return sortedItems.map((item) => <Item key={item.id} {...item} />);
+    }
+  };
+
   return (
     <div>
       <div>
@@ -32,14 +59,21 @@ export default function ItemList() {
           onClick={() => setSortBy("category")}
           style={{
             backgroundColor: sortBy === "category" ? "lightblue" : "white",
+            marginRight: "10px",
           }}
         >
           Sort by Category
         </button>
+        <button
+          onClick={() => setSortBy("grouped")}
+          style={{
+            backgroundColor: sortBy === "grouped" ? "lightblue" : "white",
+          }}
+        >
+          Group by Category
+        </button>
       </div>
-      {sortedItems.map((item) => (
-        <Item key={item.id} {...item} />
-      ))}
+      {renderItems()}
     </div>
   );
 }
