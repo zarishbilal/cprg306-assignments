@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import NewItem from "./new-item";
-import ItemList from "./Itemlist";
+import ItemList from "./Item-list";
 import itemsData from "./items.json";
 
 export default function ShoppingListApp() {
