@@ -1,5 +1,5 @@
 "use client";
-import Quantity from "../week-8/quantity";
+import Quantity from "./quantity";
 import { useState } from "react";
 
 export default function ItemForm({ onAddItem }) {
