@@ -1,11 +1,28 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useUserAuth } from "../_utils/auth-context"; // Import the useUserAuth hook
+import { useRouter } from "next/navigation"; // Import useRouter for redirection
 import NewItem from "./new-item";
 import ItemList from "./Item-list";
 import MealIdeas from "./meal-ideas"; // Import the new component
 import itemsData from "./items.json";
 
 export default function ShoppingListApp() {
+  const { user } = useUserAuth(); // Get the user from the auth context
+  const router = useRouter(); // Initialize useRouter for redirection
+
+  // If the user is not logged in, redirect them to the landing page
+  useEffect(() => {
+    if (!user) {
+      router.push("/week-9"); // Redirect to the landing page
+    }
+  }, [user, router]);
+
+  // If the user is not logged in, don't render the shopping list page
+  if (!user) {
+    return <p>Loading...</p>; // Show a loading message or nothing until redirection
+  }
+
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState(""); // New state variable
 
